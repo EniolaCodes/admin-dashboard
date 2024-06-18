@@ -10,7 +10,6 @@ import Header from "../../components/Header";
 const Team = () => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
-
 	const columns = [
 		{ field: "id", headerName: "ID" },
 		{
@@ -37,7 +36,7 @@ const Team = () => {
 			flex: 1,
 		},
 		{
-			field: "access",
+			field: "accessLevel",
 			headerName: "Access Level",
 			flex: 1,
 			renderCell: ({ row: { access } }) => {
@@ -51,6 +50,8 @@ const Team = () => {
 						backgroundColor={
 							access === "admin"
 								? colors.greenAccent[600]
+								: access === "manager"
+								? colors.greenAccent[700]
 								: colors.greenAccent[700]
 						}
 						borderRadius="4px"
@@ -59,7 +60,7 @@ const Team = () => {
 						{access === "manager" && <SecurityOutlinedIcon />}
 						{access === "user" && <LockOpenOutlinedIcon />}
 						<Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-							Access
+							{access}
 						</Typography>
 					</Box>
 				);
